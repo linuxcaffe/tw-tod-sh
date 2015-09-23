@@ -36,126 +36,26 @@ function pause(){
   }
 
 
-#echo "$LINENO: TOD_FILTER_PATTERN: `egrep -o ;\({2}\s+need[ .:a-zA-Z0-9\(\)]+' $NEED_TMP`"  #tmp
-#TOD_FILTER=`egrep -o "$TOD_FILTER_PATTERN" $TOD_TMP`
-#echo "$LINENO: SEPARATOR_PATTERN = $SEPARATOR_PATTERN"  #tmp
-#echo "$LINENO: RC_OTHER	= $RC_OTHER"  #tmp
-
 # TODO test for $TOD_TMP file readable/ writable
-# test for any report.*.filter in rc.tmp
-# TODO figure out boolean
 
-# if TOD_TMP exists; then
-
-# if [ -f $TOD_TMP ]; then
-# if TOD_TMP has any RC_OTHER
-
-#==============================================================
-#
-	RC_OTHER=`egrep -v "^$|^#+|^report." $TOD_TMP`
-#	echo "$LINENO: RC_OTHER	= $RC_OTHER"  #tmp
-#
-## if TOD_TMP has report.*.filter
-#	ANY_REPORT_FILTER=`egrep -o "$RPT_ANY_PATTERN" $TOD_TMP`
-#	echo "$LINENO: ANY_REPORT_FILTER = $ANY_REPORT_FILTER"  #tmp
-#	if [[ "$ANY_REPORT_FILTER" != "" ]]; then  # no filters set in rc.tmp
-#		#FILTER_A=`task _get rc.report.${REPORT_A}.filter |sed -r 's/^report[.a-z]+filter=//' |sed -r 's/\(\(\sneed[ .:a-zA-Z0-9\(\)]+//' |sed -r 's/[ _]+//'`
-#		#FILTER_B=`task _get rc.report.${REPORT_B}.filter |sed -r 's/^report[.a-z]+filter=//' |sed -r 's/\(\(\sneed[ .:a-zA-Z0-9\(\)]+//' |sed -r 's/[ _]+//'`
-#		echo "$LINENO FILTER_A = $FILTER_A"  #tmp
-#		echo "$LINENO FILTER_B = $FILTER_B"  #tmp
-#
-#
-#	# if filter has ANY_SEPARATOR
-#		ANY_SEPARATOR=`egrep "$RPT_ANY_PATTERN" $TOD_TMP |egrep -c "$SEPARATOR_PATTERN"`
-#		echo "$LINENO any separator = $ANY_SEPARATOR"  #tmp
-#		if [[ "$ANY_SEPARATOR" != "" ]]; then  # it HAS separators, so from multiple tw-ext sources
-#			FIELD_1=`egrep "$FILTER_A_PATTERN" $TOD_TMP |sed -r $SED_RM_RPT_PATTERN |cut -d'_' -f1`
-#				echo "test field 1 = $FIELD_1"
-#				TEST_TOD_FIELD=`egrep "$TOD_FILTER_PATTERN" ${FIELD_1} |sed -r $SED_RM_RPT_PATTERN`
-#					if [[ "$TOD_TEST_FIELD" != "" ]]; then
-#						echo "Field 1 is a ToD field"
-#					elif [[ "$FIELD_1" == $BASE_A ]]; then
-#						echo "Field 1 is a BASE field"
-#						BASE_A=""
-#						BASE_B=""
-#					else
-#						FIELD_A=$FIELD_1
-#						xFIELD_1=`egrep "$FILTER_A_PATTERN" $TOD_TMP |sed -r $SED_RM_RPT_PATTERN |cut -d'_' -f1`
-#					fi
-#
-#
-#			FIELD_2=`egrep "$FILTER_A_PATTERN" $TOD_TMP |sed -r $SED_RM_RPT_PATTERN |cut -d'_' -f2`
-#				TEST_TOD_FIELD=`egrep "$TOD_FILTER_PATTERN" $FIELD_2 |sed -r $SED_RM_RPT_PATTERN`
-#					if [[ "$TOD_TEST_FIELD" != "" ]]; then
-#						echo "Field 1 is a ToD field"
-#					elif [[ "$FIELD_2" == $BASE_A ]]; then
-#						echo "Field 2 is a BASE field"
-#						BASE_A=""
-#						BASE_B=""
-#					fi
-#				echo "test field 2 = $FIELD_2"
-#			FIELD_3=`egrep "$FILTER_A_PATTERN" $TOD_TMP |sed -r $SED_RM_RPT_PATTERN |cut -d'_' -f3`
-#				echo "test field 3 = $FIELD_3"
-#			FIELD_A=`egrep -o "$TOD_FILTER_PATTERN" $TOD_TMP`
-#				echo "test field 1a = $FIELD_A"
-#			FIELD_B=`egrep -o "$TOD_FILTER_PATTERN" $TOD_TMP`
-#				echo "test field 2a = $FIELD_B"
-#		# if TOD_FILTER_PATTERN is in field1 (FILTER_OTHER = -f2-)
-#			if [[ $FIELD_1 == $FIELD_A ]]; then  # pattern -f1 is a tod-filter
-#				FILTER_A="`egrep $FILTER_A_PATTERN $TOD_TMP |sed -r $SED_RM_RPT_PATTERN |cut -d'_' -f2-` _ "
-#				FILTER_B="`egrep $FILTER_B_PATTERN $TOD_TMP |sed -r $SED_RM_RPT_PATTERN |cut -d'_' -f2-` _ "
-#				echo "$LINENO: need in field 1 FILTER_A = $FILTER_A"  #tmp
-#				echo "$LINENO: need in field 2 FILTER_B = $FILTER_B"  #tmp
-#			
-#		# if TOD_FILTER_PATTERN is in field2 (FILTER_OTHER = --complement -s -f2))
-#			elif [[ $FIELD_2 == $FIELD_B ]]; then  # pattern -f2 is a tod-filter
-#				FILTER_A="`egrep $FILTER_A_PATTERN $TOD_TMP |sed -r $SED_RM_RPT_PATTERN |cut -d'_' --complement -s -f2` _ "
-#				FILTER_B="`egrep $FILTER_B_PATTERN $TOD_TMP |sed -r $SED_RM_RPT_PATTERN |cut -d'_' --complement -s -f2` _ "
-#				echo "$LINENO: need in field 2 FILTER_A = $FILTER_A"  #tmp
-#				echo "$LINENO: need in field 2 FILTER_B = $FILTER_B"  #tmp
-#			else
-#				FILTER_A="`egrep $FILTER_A_PATTERN $TOD_TMP |sed -r $SED_RM_RPT_PATTERN` _ "
-#				FILTER_B="`egrep $FILTER_B_PATTERN $TOD_TMP |sed -r $SED_RM_RPT_PATTERN` _ "
-#				echo "$LINENO: FILTER_A = $FILTER_A"  #tmp
-#				echo "$LINENO: FILTER_B = $FILTER_B"  #tmp
-#			fi
-#		fi
-#
-#	else
-#		# incorporate the original report defaults
-#		#FILTER_A=`task _get rc.report.${REPORT_A}.filter`
-#		#FILTER_B=`task _get rc.report.${REPORT_B}.filter`
-#
-#		FILTER_A=""
-#		FILTER_B=""
-#		echo "$LINENO FILTER_A = $FILTER_A"  #tmp
-#		echo "$LINENO FILTER_B = $FILTER_B"  #tmp
-#	fi
-#
-#====================================================================
-
-#	BASE_A_TEST=`egrep -o "$BASE_A" $TOD_TMP`
-#	echo "$LINENO: base test 1: $BASE_A_TEST"
-#	BASE_B_TEST=`egrep -o "$BASE_B" $TOD_TMP`
-#	echo "$LINENO: base test 2: $BASE_B_TEST"
-	
+RC_OTHER=`egrep -v "^$|^#+|^report." $TOD_TMP`
 
 # GET BASE
-	cp $TOD_TMP $INSTALL_DIR/tmp.tmp
-	echo "$TMP_HEADER" > $TOD_TMP
-	BASE_A=`task _get rc.report.${REPORT_A}.filter`
-	echo "$LINENO: base 1: $BASE_A"
-        BASE_B=`task _get rc.report.${REPORT_B}.filter`
-	echo "$LINENO: base 2: $BASE_B"
-	mv $INSTALL_DIR/tmp.tmp $TOD_TMP
+cp $TOD_TMP $INSTALL_DIR/tmp.tmp
+echo "$TMP_HEADER" > $TOD_TMP
+BASE_A=`task _get rc.report.${REPORT_A}.filter`
+#echo "$LINENO: base 1: $BASE_A"
+BASE_B=`task _get rc.report.${REPORT_B}.filter`
+#echo "$LINENO: base 2: $BASE_B"
+mv $INSTALL_DIR/tmp.tmp $TOD_TMP
 
 
 # GET FIELD 2
 
 FIELD_2A=`egrep "$FILTER_A_PATTERN" $TOD_TMP |cut -d'_' -f2`
 FIELD_2B=`egrep "$FILTER_B_PATTERN" $TOD_TMP |cut -d'_' -f2`
-echo "$LINENO filter 2a = $FILTER_2A"
-echo "$LINENO filter 2b = $FILTER_2B"
+# echo "$LINENO filter 2a = $FILTER_2A"
+# echo "$LINENO filter 2b = $FILTER_2B"
 
 
 # TOD FILTERS
@@ -166,105 +66,29 @@ T_DAY="( -eve -night )"
 T_EVE="( -aft -morn -day )"
 T_NIGHT="( -morn -aft -day -eve )"
 
+declare -A day=([value]='( -eve -night )' [word]=day [hr]=8 ) 
+declare -A morn=([value]='( -aft -eve -night )' [word]=morning [hr]=8 ) 
+declare -A aft=([value]='( -morn -eve -night )' [word]=afternoon [hr]=13 ) 
+declare -A eve=([value]='( -day -morn -aft )' [word]=evening [hr]=18 ) 
+declare -A night=([value]='( -day -morn -aft -eve )' [word]=night [hr]=22 ) 
 
-echo "$LINENO break"  #tmp
-# ARGS
-if [[ "$1" != "" ]]; then
-# these args cause no changes
-	if [[ "$1" == "$TOD_CONFIG" ]]; then
-		echo "Time of Day is already set to $TOD_CONFIG, no changes made"
-		exit 0
-
-	elif [[ "$1" =~ "h[elp]" ]]; then
-		echo "there is no help for you"
-		cat $INSTALL_DIR/tod.txt
-		pause 'Press <CR> to continue...'
-		exit 0
-# these args DO cause changes
-
-	elif [[ "$1" = "none" ]]; then
-		$TASK rc.verbose= rc.confirmation= config tod none
-		TOD_CONFIG=`task _get rc.tod`
-		echo -e "$TMP_HEADER" > $TOD_TMP
-		echo -e "$RC_OTHER" >> $TOD_TMP
-		echo -e "$FILTER_A_PATTERN-$BASE_A _ $FIELD_2A _ _" >> $TOD_TMP
-		echo -e "$FILTER_B_PATTERN=$BASE_B _ $FIELD_2B _ _" >> $TOD_TMP
-		echo "No more Time of Day filtering (for now)"
-		exit 0
-
-	elif [[ "$1" = "morn" ]]; then
-		$TASK rc.verbose= rc.confirmation= config tod $1
-		TOD_CONFIG=`task _get rc.tod`
-		echo -e "$TMP_HEADER" > $TOD_TMP
-		echo -e "$RC_OTHER" >> $TOD_TMP
-		echo -e "report.${REPORT_A}.filter=$BASE_A _ $FIELD_2A _ $T_MORN _" >> $TOD_TMP
-		echo -e "report.${REPORT_B}.filter=$BASE_B _ $FIELD_2B _ $T_MORN _" >> $TOD_TMP
-		echo "Time of Day filter changed to $TOD_CONFIG"
-		exit 0
-
-	elif [[ "$1" = "aft" ]]; then
-		$TASK rc.verbose= rc.confirmation= config tod $1
-		TOD_CONFIG=`task _get rc.tod`
-		echo -e "$TMP_HEADER" > $TOD_TMP
-		echo -e "$RC_OTHER" >> $TOD_TMP
-		echo -e "report.${REPORT_A}.filter=$BASE_A _ $FIELD_2A _ $T_AFT _" >> $TOD_TMP
-		echo -e "report.${REPORT_B}.filter=$BASE_B _ $FIELD_2B _ $T_AFT _" >> $TOD_TMP
-		echo "Time of Day filter changed to $TOD_CONFIG"
-		exit 0
-
-	elif [[ "$1" = "day" ]]; then
-		$TASK rc.verbose= rc.confirmation= config tod $1
-		TOD_CONFIG=`task _get rc.tod`
-		echo -e "$TMP_HEADER" > $TOD_TMP
-		echo -e "$RC_OTHER" >> $TOD_TMP
-		echo -e "report.${REPORT_A}.filter=$BASE_A _ $FIELD_2A _ $T_DAY _" >> $TOD_TMP
-		echo -e "report.${REPORT_B}.filter=$BASE_B _ $FIELD_2B _ $T_DAY _" >> $TOD_TMP
-		echo "Time of Day filter changed to $TOD_CONFIG"
-		exit 0
-
-	elif [[ "$1" = "eve" ]]; then
-		$TASK rc.verbose= rc.confirmation= config tod $1
-		TOD_CONFIG=`task _get rc.tod`
-		echo -e "$TMP_HEADER" > $TOD_TMP
-		echo -e "$RC_OTHER" >> $TOD_TMP
-		echo -e "report.${REPORT_A}.filter=$BASE_A _ $FIELD_2A _ $T_EVE _" >> $TOD_TMP
-		echo -e "report.${REPORT_B}.filter=$BASE_B _ $FIELD_2B _ $T_EVE _" >> $TOD_TMP
-		echo "Time of Day filter changed to $TOD_CONFIG"
-		exit 0
-
-	elif [[ "$1" = "night" ]]; then
-		$TASK rc.verbose= rc.confirmation= config tod $1
-		TOD_CONFIG=`task _get rc.tod`
-		echo -e "$TMP_HEADER" > $TOD_TMP
-		echo -e "$RC_OTHER" >> $TOD_TMP
-		echo -e "report.${REPORT_A}.filter=$BASE_A _ $FIELD_2A _ $T_NIGHT _" >> $TOD_TMP
-		echo -e "report.${REPORT_B}.filter=$BASE_B _ $FIELD_2B _ $T_NIGHT _" >> $TOD_TMP
-		echo "Time of Day filter changed to $TOD_CONFIG"
-		exit 0
-	fi
-
-fi
-echo "$LINENO break"  #tmp
+# echo "$LINENO break"  #tmp
+# echo "$LINENO break"  #tmp
 
 if [[ "$1" == "" ]]; then
+		
+	# TIME OF DAY REPORT
+	printf '%*s\n' 167 '' | tr ' ' -
+	echo
+	echo "     Time of Day Report      $DATE"
+	echo "                                Good ${TOD_CONFIG[word]} !"
+	printf '%*s\n' 167 '' | tr ' ' -
+	echo	
 
-
-	
-	
-# TIME OF DAY REPORT
- 	echo -e "----
-	Time of Day Report      $DATE         
-
-				Good $TOD_CONFIG !
-	
-	----
-	"
-	
-
-# PROMPT
+	# PROMPT
 	read -p "   ToD >" prompt
 	echo
-# these options make no changes
+	# these options make no changes
 
 	if [[ "$promot" == "$TOD_CONFIG" ]]; then
 		echo "Time of Day is already set to $TOD_CONFIG, no changes made"
@@ -279,7 +103,7 @@ if [[ "$1" == "" ]]; then
 		ToD
 		exit 0
 
-# these options DO make changes.
+	# these options DO make changes.
 
 	elif [[ "$prompt" == "none" ]]; then
 		echo "No more Time of Day filtering (for now)"
@@ -346,10 +170,84 @@ if [[ "$1" == "" ]]; then
 		echo -e "report.${REPORT_B}.filter=$BASE_B _ $FIELD_2B _ $T_NIGHT _" >> $TOD_TMP
 		ToD
 		exit 0
-	else
+	fi
+exit 0
+#fi
+# ARGS
+elif [[ "$1" != "" ]]; then
+	# these args cause no changes
+	if [[ "$1" == "$TOD_CONFIG" ]]; then
+		echo "Time of Day is already set to $TOD_CONFIG, no changes made"
+		exit 0
 
-	echo "I don't know what you want!"
-#        echo -e "$TMP_HEADER" > $TOD_TMP"
-	   exit 0
-   fi
+	elif [[ "$1" =~ "h[elp]" ]]; then
+		echo "there is no help for you"
+		cat $INSTALL_DIR/tod.txt
+		pause 'Press <CR> to continue...'
+		exit 0
+
+	# these args DO cause changes
+	elif [[ "$1" = "none" ]]; then
+		$TASK rc.verbose= rc.confirmation= config tod none
+		TOD_CONFIG=`task _get rc.tod`
+		echo -e "$TMP_HEADER" > $TOD_TMP
+		echo -e "$RC_OTHER" >> $TOD_TMP
+		echo -e "$FILTER_A_PATTERN-$BASE_A _ $FIELD_2A _ _" >> $TOD_TMP
+		echo -e "$FILTER_B_PATTERN=$BASE_B _ $FIELD_2B _ _" >> $TOD_TMP
+		echo "No more Time of Day filtering (for now)"
+		exit 0
+
+	elif [[ "$1" = "morn" ]]; then
+		$TASK rc.verbose= rc.confirmation= config tod $1
+		TOD_CONFIG=`task _get rc.tod`
+		echo -e "$TMP_HEADER" > $TOD_TMP
+		echo -e "$RC_OTHER" >> $TOD_TMP
+		echo -e "report.${REPORT_A}.filter=$BASE_A _ $FIELD_2A _ $T_MORN _" >> $TOD_TMP
+		echo -e "report.${REPORT_B}.filter=$BASE_B _ $FIELD_2B _ $T_MORN _" >> $TOD_TMP
+		echo "Time of Day filter changed to $TOD_CONFIG"
+		exit 0
+
+	elif [[ "$1" = "aft" ]]; then
+		$TASK rc.verbose= rc.confirmation= config tod $1
+		TOD_CONFIG=`task _get rc.tod`
+		echo -e "$TMP_HEADER" > $TOD_TMP
+		echo -e "$RC_OTHER" >> $TOD_TMP
+		echo -e "report.${REPORT_A}.filter=$BASE_A _ $FIELD_2A _ $T_AFT _" >> $TOD_TMP
+		echo -e "report.${REPORT_B}.filter=$BASE_B _ $FIELD_2B _ $T_AFT _" >> $TOD_TMP
+		echo "Time of Day filter changed to $TOD_CONFIG"
+		exit 0
+
+	elif [[ "$1" = "day" ]]; then
+		$TASK rc.verbose= rc.confirmation= config tod $1
+		TOD_CONFIG=`task _get rc.tod`
+		echo -e "$TMP_HEADER" > $TOD_TMP
+		echo -e "$RC_OTHER" >> $TOD_TMP
+		echo -e "report.${REPORT_A}.filter=$BASE_A _ $FIELD_2A _ $T_DAY _" >> $TOD_TMP
+		echo -e "report.${REPORT_B}.filter=$BASE_B _ $FIELD_2B _ $T_DAY _" >> $TOD_TMP
+		echo "Time of Day filter changed to $TOD_CONFIG"
+		exit 0
+
+	elif [[ "$1" = "eve" ]]; then
+		$TASK rc.verbose= rc.confirmation= config tod $1
+		TOD_CONFIG=`task _get rc.tod`
+		echo -e "$TMP_HEADER" > $TOD_TMP
+		echo -e "$RC_OTHER" >> $TOD_TMP
+		echo -e "report.${REPORT_A}.filter=$BASE_A _ $FIELD_2A _ $T_EVE _" >> $TOD_TMP
+		echo -e "report.${REPORT_B}.filter=$BASE_B _ $FIELD_2B _ $T_EVE _" >> $TOD_TMP
+		echo "Time of Day filter changed to $TOD_CONFIG"
+		exit 0
+
+	elif [[ "$1" = "night" ]]; then
+		$TASK rc.verbose= rc.confirmation= config tod $1
+		TOD_CONFIG=`task _get rc.tod`
+		echo -e "$TMP_HEADER" > $TOD_TMP
+		echo -e "$RC_OTHER" >> $TOD_TMP
+		echo -e "report.${REPORT_A}.filter=$BASE_A _ $FIELD_2A _ $T_NIGHT _" >> $TOD_TMP
+		echo -e "report.${REPORT_B}.filter=$BASE_B _ $FIELD_2B _ $T_NIGHT _" >> $TOD_TMP
+		echo "Time of Day filter changed to $TOD_CONFIG"
+		exit 0
+	fi
+
+echo "I don't know what you want!"
+exit 1
 fi
