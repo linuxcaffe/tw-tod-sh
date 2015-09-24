@@ -1,0 +1,7 @@
+tod.txt
+
+:Author: djp
+:Email: djp@transit
+:Date: 2015-09-16 13:57
+
+Taskwarrior Time of Day Shell Script -- help file
