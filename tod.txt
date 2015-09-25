@@ -1,7 +1,22 @@
-tod.txt
+Taskwarrior Time of Day Shell Script -- help file -- see also: README.md
 
-:Author: djp
-:Email: djp@transit
-:Date: 2015-09-16 13:57
+Usage: ToD [morn|aft|day|eve|night|none|help]
 
-Taskwarrior Time of Day Shell Script -- help file
+Summary: tw-tod-sh is a taskwarrior Time of Day extension that use tags
+    +morn, +aft +day +eve +night to filter some taskwarrior reports 
+    (ready and ls, by default) for time-appropriate tasks. 
+
+    Future versions will include integration with the users crontab, changing
+    time-of-day setting automatically.
+
+Installation:
+
+Configuration:
+
+Using the ToD extension:
+
+Troubleshooting:
+
+Contributing:
+
+License:

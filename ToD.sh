@@ -99,9 +99,9 @@ echo $USAGE
 		ToD
 		exit 0
 
-	elif [[ "$prompt" =~ h|help ]]; then
+	elif [[ "$prompt" =~ help ]]; then
 		echo "there is no help for you"
-		cat $INSTALL_DIR/tod.txt
+		less $INSTALL_DIR/tod.txt
 		pause 'Press <CR> to continue...'
 		ToD
 		exit 0
@@ -181,9 +181,10 @@ elif [[ "$1" != "" ]]; then
 	# these args cause no changes
 	if [[ "$1" == $TOD_CONFIG ]]; then echo "Time of Day is already set to $TOD_CONFIG, no changes made";	exit 0
 
-	elif [[ "$1" =~ h|help ]]; then echo "there is no help for you"
+	elif [[ "$1" =~ help ]]; then echo "there is no help for you"
 		cat $INSTALL_DIR/tod.txt
 		pause 'Press <CR> to continue...'
+		ToD
 		exit 0
 
 	# these args DO cause changes

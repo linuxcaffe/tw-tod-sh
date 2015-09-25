@@ -1,1 +1,6 @@
 # THIS IS THE tw-tod-sh CONFIGURATION FILE -- EDIT (if you dare)
+
+report.no-tod.labels=ID,Age,Project,Tags,Sched,Due,Description,Urg
+report.no-tod.columns=id,start.age,project,tags,scheduled,due,description,urgency
+report.no-tod.filter=+PENDING ( -morn -aft -day -eve -night )
+report.no-tod.sort=tags+/,project+,description+
