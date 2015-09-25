@@ -8,6 +8,8 @@ is a taskwarrior extension designed to filter-out tasks that are not appropriate
 
 - easily set preferred time-of-day for a task by adding a +morn +aft +day +eve +night tag
 - easily re-set time-of-day with 'ToD [morn|aft|day|eve|night|none]'
+- does not use or interfere with task context
+- designed to work with tw-needs-hook (another persistent filter tw-extension)
 - view help with 'ToD help'
 
 #### Planned
@@ -25,4 +27,4 @@ Instead, what this extension does, is to apply the _iverse_ of the tod tag. Inst
 
 ### Benefits
 
-De-selecting reports that are not actionable "now" can reduce a large list by half, dramatically improving the signal-to-noise ratio, and making it clearer what task can be done immediately.
+De-selecting reports that are not actionable "now" can reduce a large list by half, dramatically improving the signal-to-noise ratio, and making it clearer what tasks can be done immediately.
