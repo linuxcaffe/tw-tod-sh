@@ -21,7 +21,7 @@ is a taskwarrior extension designed to filter-out tasks that are not appropriate
 
 ### Advantages
 
-You could easily filter for all "evening tasks" with 'task +eve ready' but that over-simplification would hide any task without an +eve tag. That's a problem, because it would hide any tasks _without_ an evening tag, which might well have tasks you could do in the evening, unless you were _meticulous_ with your tags.
+You could easily filter for all "evening tasks" with 'task +eve ready' but that over-simplification would hide any task without an +eve tag. That's potentially a problem, because many of the hidden tasks might well be actionable any time, including the evening, unless you were _meticulous_ with your tags.
 
 Instead, what this extension does, is to apply the _iverse_ of the tod tag. Instead of +eve, it's ( -morn -aft -day ), eliminating tasks specified for some other time, but not concealing anything else. 
 
