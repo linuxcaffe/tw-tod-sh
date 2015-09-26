@@ -3,6 +3,11 @@
 
 is a taskwarrior extension designed to filter-out tasks that are not appropriate for the current (now) time of day, for 2 selected reports. Using the extension is as easy as adding +morn +aft +day +eve +night tags to any tasks that would be best performed at those times. 
 
+Status: core functions working well
+
+See also: tod.txt for more requirements/ install/ config/ using ToD info
+
+Caveat: Perpetual Proof-of-Concept until reviewed and tested by "real programmers". Lock up your daughters and backup your data!
 
 ### Features
 
@@ -28,3 +33,7 @@ Instead, what this extension does, is to filter selected reports with the _inver
 ### Benefits
 
 De-selecting reports that are not actionable "now" can reduce a large list by half, dramatically improving the signal-to-noise ratio, and making it clearer which tasks can (and should) be done immediately.
+
+### Issues
+
+There are always bugs, and there could always be improvements. Contributions, ideas and comments are welcome at https://github.com/linuxcaffe/tw-tod-sh
