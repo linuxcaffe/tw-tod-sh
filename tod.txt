@@ -9,6 +9,11 @@ Summary: tw-tod-sh is a taskwarrior Time of Day extension that use tags
     Future versions will include integration with the users crontab, changing
     time-of-day setting automatically.
 
+Requirements
+
+This bash script was written for linux, and presumes a lot of un*xisms
+- taskwarrior (taskwarrior.org, v2.4+)
+
 Installation:
 
 Configuration:
