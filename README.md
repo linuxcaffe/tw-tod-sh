@@ -1,7 +1,7 @@
 # tw-tod-sh
 (taskwarrior time-of-day shell script)
 
-is a taskwarrior extension designed to filter-out tasks that are not appropriate for the current (now) time of day. Using the extension is as easy as adding +morn +aft +day +eve +night tags to any tasks that would be best performed at those times. 
+is a taskwarrior extension designed to filter-out tasks that are not appropriate for the current (now) time of day, for 2 selected reports. Using the extension is as easy as adding +morn +aft +day +eve +night tags to any tasks that would be best performed at those times. 
 
 
 ### Features
